@@ -1,8 +1,18 @@
 .add{
-    margin-left: 4%;
-    width: 90%;
+    width: 100%;
     text-align: center;
     background-color: #eceff1;
-    border-bottom-width: solid;
+    border-radius: inherit;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
     border-bottom-color: #cfd8dc ;
+}
+.lab{
+    font-size: 3vh;
+    margin-left: 2%;
+}
+
+input{
+    margin: 3%;
+    width: 93% !important;
 }
