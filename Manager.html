@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Table</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/TimeTable.css">
+    <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/stars.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
+    <link rel = "stylesheet" href="CSS/modal.css">
+
+</head>
+<body>
+
+<div id="space" >
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+</div>
+
+
+
+<div class="headbox card">
+    <div class="heading">
+        BUNK MANAGER
+    </div>
+
+    <div class="navloc">
+        <div>HOME</div>
+        <div>TIME TABLE</div>
+        <div>LOG OUT</div>
+    </div>
+</div>
+
+<div class="box">
+<ul class="nav nav-pills nav-fill bar">
+    <li class="nav-item ele active" id="mon">
+        <a class="nav-link">Monday</a>
+    </li>
+    <li class="nav-item ele" id="tue">
+        <a class="nav-link">Tuesday</a>
+    </li>
+    <li class="nav-item ele" id="wed">
+        <a class="nav-link">Wednesday</a>
+    </li>
+    <li class="nav-item ele" id="thu">
+        <a class="nav-link">Thursday</a>
+    </li>
+    <li class="nav-item ele" id="fri">
+        <a class="nav-link">Friday</a>
+    </li>
+</ul>
+    <div id="mondiv" class="daydiv">
+        <div class="subject">
+            <div class = "classcolor"></div>
+            <div class="class" id="monmaths1">Maths</div>
+            <div id="monmathstime" class="time"><span class="from">8:00</span>&nbsp;to&nbsp;<span class="from">9:00</span></div>
+        </div>
+
+        <div class="subject">
+            <div class = "classcolor"></div>
+            <div class="class" id="monchemistry1">Chemistry</div>
+            <div id="monchemistrytime" class="time"><span class="from">8:00</span>&nbsp;to&nbsp;<span class="from">9:00</span></div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+
+        <!--Small Model Monday-->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">.col-md-4</div>
+                            <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+                            <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                Level 1: .col-sm-9
+                                <div class="row">
+                                    <div class="col-xs-8 col-sm-6">
+                                        Level 2: .col-xs-8 .col-sm-6
+                                    </div>
+                                    <div class="col-xs-4 col-sm-6">
+                                        Level 2: .col-xs-4 .col-sm-6
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+    </div>
+
+    <div id="tuediv" class="daydiv">
+        <button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+    <div id="weddiv" class="daydiv">
+        <button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+    <div id="thudiv" class="daydiv">
+
+        <button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+    <div id="fridiv" class="daydiv">
+        <button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src = "JS/timet.js"></script>
+</body>
+</html>

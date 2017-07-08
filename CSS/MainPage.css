@@ -62,3 +62,7 @@ button{
         left: 5%;
     }
 }
+
+#inbtn, #upbtn{
+    cursor: pointer;
+}
