@@ -38,7 +38,7 @@
 .navloc{
     margin-top: 0.5%;
     float: right;
-    width: 60%;
+    width: 45%!important;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
     /*border-top-left-radius: 25%;*/
     /*border-bottom-left-radius: 25%;*/
@@ -111,7 +111,6 @@
 .classcolor{
     display: inline-block;
     height:7vh !important;
-    background-color: greenyellow;
     width: 7%;
     height: auto;
 }
@@ -132,7 +131,40 @@
     font-family: 'Zilla Slab', serif;
 }
 .plus{
-    position: absolute;
-    bottom: 10px;
-    right: 0px;
+    z-index: 100;
+    position: fixed;
+    bottom: 6vh;
+    right: 14%;
+}
+
+@media screen and (max-width: 1090px){
+    .navloc{
+        font-size: 3vh;
+    }
+    .ele{
+        font-size: 3vh;
+    }
+}
+
+@media screen and (max-width: 720px){
+    .navloc{
+        font-size: 2.5vh;
+    }
+    .heading{
+        font-size: 5vh;
+    }
+    .box{
+        width:90%;
+        left: 5%;
+    }
+    .ele{
+        font-size: 2vh;
+    }
+    .bar{
+        height: 6vh;
+    }
+    .plus{
+        bottom: 9vh;
+        right: 6%;
+    }
 }

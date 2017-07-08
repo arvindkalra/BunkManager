@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Time Table</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="CSS/TimeTable.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
     <link rel="stylesheet" href="CSS/stars.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
@@ -58,42 +58,45 @@
     </li>
 </ul>
     <div id="mondiv" class="daydiv">
-        <div class="subject">
-            <div class = "classcolor"></div>
-            <div class="class" id="monmaths1">Maths</div>
-            <div id="monmathstime" class="time"><span class="from">8:00</span>&nbsp;to&nbsp;<span class="from">9:00</span></div>
-        </div>
+        <!--<div class="subject">-->
+            <!--<div class = "classcolor"></div>-->
+            <!--<div class="class" id="monmaths1">Maths</div>-->
+            <!--<div id="monmathstime" class="time"><span class="from">08:00</span>&nbsp;to&nbsp;<span class="from">09:00</span></div>-->
+        <!--</div>-->
 
-        <div class="subject">
-            <div class = "classcolor"></div>
-            <div class="class" id="monchemistry1">Chemistry</div>
-            <div id="monchemistrytime" class="time"><span class="from">8:00</span>&nbsp;to&nbsp;<span class="from">9:00</span></div>
-        </div>
+        <!--<div class="subject">-->
+            <!--<div class = "classcolor"></div>-->
+            <!--<div class="class" id="monchemistry1">Chemistry</div>-->
+            <!--<div id="monchemistrytime" class="time"><span class="from">09:00</span>&nbsp;to&nbsp;<span class="from">10:00</span></div>-->
+        <!--</div>-->
 
-        <button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+        <button id = "monbtn" type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
 
     </div>
 
     <div id="tuediv" class="daydiv">
-        <button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+
+        <button id = "tuebtn" type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
     </div>
     <div id="weddiv" class="daydiv">
-        <button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+
+        <button id = "wedbtn" type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
     </div>
     <div id="thudiv" class="daydiv">
 
-        <button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+        <button id = "thubtn" type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
     </div>
     <div id="fridiv" class="daydiv">
-        <button type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+
+        <button id="fribtn" type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
     </div>
@@ -119,16 +122,16 @@
                 <input class="form-control" type="color" value="#563d7c" id="colorinput">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">ADD</button>
+                <button id = "addbtn" type="button" class="btn btn-success" data-dismiss="modal">ADD</button>
             </div>
 
         </div>
     </div>
 </div>
 
-
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src = "JS/timet.js"></script>
+<script src="JS/addsubj.js"></script>
 </body>
 </html>
