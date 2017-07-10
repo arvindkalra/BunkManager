@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Table</title>
+    <link rel="stylesheet" href="CSS/TimeTable.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/stars.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/modal.css">
+    <link rel="stylesheet" href="CSS/headings.css">
+
+</head>
+<body>
+
+<div id="space" >
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+    <div class="stars"></div>
+</div>
+
+
+
+<div class="headbox card">
+    <div class="heading">
+        BUNK MANAGER
+    </div>
+
+    <div class="navloc">
+        <a href="index.html" style="text-decoration: none; color: black"><div>HOME</div></a>
+        <a href="#" style="text-decoration: none; color: black"><div>TIME TABLE</div></a>
+        <div>LOG OUT</div>
+    </div>
+</div>
+
+<div class="box">
+<ul class="nav nav-pills nav-fill bar">
+    <li class="nav-item ele active" id="mon">
+        <a class="nav-link">Monday</a>
+    </li>
+    <li class="nav-item ele" id="tue">
+        <a class="nav-link">Tuesday</a>
+    </li>
+    <li class="nav-item ele" id="wed">
+        <a class="nav-link">Wednesday</a>
+    </li>
+    <li class="nav-item ele" id="thu">
+        <a class="nav-link">Thursday</a>
+    </li>
+    <li class="nav-item ele" id="fri">
+        <a class="nav-link">Friday</a>
+    </li>
+</ul>
+    <div id="mondiv" class="daydiv">
+        <!--<div class="subject">-->
+            <!--<div class = "classcolor"></div>-->
+            <!--<div class="class" id="monmaths1">Maths</div>-->
+            <!--<div id="monmathstime" class="time"><span class="from">08:00</span>&nbsp;to&nbsp;<span class="from">09:00</span></div>-->
+        <!--</div>-->
+
+        <!--<div class="subject">-->
+            <!--<div class = "classcolor"></div>-->
+            <!--<div class="class" id="monchemistry1">Chemistry</div>-->
+            <!--<div id="monchemistrytime" class="time"><span class="from">09:00</span>&nbsp;to&nbsp;<span class="from">10:00</span></div>-->
+        <!--</div>-->
+
+        <button id = "monbtn" type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+
+    </div>
+
+    <div id="tuediv" class="daydiv">
+
+        <button id = "tuebtn" type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+    <div id="weddiv" class="daydiv">
+
+        <button id = "wedbtn" type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+    <div id="thudiv" class="daydiv">
+
+        <button id = "thubtn" type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+    <div id="fridiv" class="daydiv">
+
+        <button id="fribtn" type="button" class="btn btn-success btn-number plus" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
+            <span class="glyphicon glyphicon-plus"></span>
+        </button>
+    </div>
+
+</div>
+
+
+<!--Small Model-->
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Subject</h4>
+            </div>
+
+            <div class="modal-body">
+                <input type="text" class="form-control" id="subjectname" placeholder="Subject Name" required>
+                <div class="lab">TIME : </div>
+                <input type="text" class="form-control" id="from" placeholder="FROM (HH:MM)" required>
+                <input type="text" class="form-control" id="to" placeholder="TO (HH:MM)" required>
+                <div class="lab">COLOR : </div>
+                <input class="form-control" type="color" value="#563d7c" id="colorinput">
+            </div>
+            <div class="modal-footer">
+                <button id = "addbtn" type="button" class="btn btn-success" data-dismiss="modal">ADD</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src = "JS/timet.js"></script>
+<script src="JS/addsubj.js"></script>
+</body>
+</html>
