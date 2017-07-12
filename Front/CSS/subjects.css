@@ -1,0 +1,25 @@
+.titlebox{
+    margin: 2% 0 0 3%;
+    height: 10vh;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #546e7a;
+}
+
+.title{
+    display: inline-block;
+    font-size: 7vh;
+    font-family: 'Roboto Slab', serif;
+    color: whitesmoke;
+}
+.addbtn{
+    display: inline-block;
+    margin-left: 85%;
+    position: relative;
+    bottom: 7vh;
+}
+
+input{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
