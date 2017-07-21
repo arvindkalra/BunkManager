@@ -6,43 +6,45 @@
     margin-top: 0;
 }
 .subjname{
-    font-size: 5vh;
+    font-size: 4vh;
     display: inline-block;
     font-family: 'Ubuntu', sans-serif;
     color: #01579b;
 }
 .age-{
-    font-size: 5vh;
+    font-size: 3.5vh;
     display: inline-block;
     font-family: 'Lemonada', cursive;
     margin-left: 50%;
     color: #00c853;
 }
-
-.second, .third, .firstline{
-    margin: 2vh 0 2vh 0;
-}
 .input-group{
-    height: 3vh;
+    height: 2vh;
     float: right;
     width: 25%;
+}
+.sec{
+    margin-top: 2%;
+}
+.thir{
+    margin-top: 9%;
+    margin-bottom: 3%;
+}
+.taip, .tbip{
+    width: 30%;
 }
 .ta, .tb{
     font-size: 3vh;
     display: inline-block;
 }
 .subject{
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: #546e7a;
     margin:2%;
     padding: 2%;
-    background-color: white;
 }
 
 .classcolor{
     background-color: #ff0e09;
     width: 100%;
-    height: 4vh;
+    height: 2vh;
     display: inline-block;
 }

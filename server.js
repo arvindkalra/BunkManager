@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const fs = require('./files.js');
+const sql = require('./sql');
 
 app.use('/', express.static('Front'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,7 +26,7 @@ app.post('/init', function (req,res) {
 app.post('/read',function (req,res) {
     fs.read(function (obj) {
         res.send(obj);
-    })
+    });
 });
 
 app.post('/write', function (req, res) {
@@ -37,8 +38,15 @@ app.post('/write', function (req, res) {
 
     fs.read(function (obj) {
         fs.write(day,subject,from,to,color,obj);
-    })
+    });
 
     res.send("");
+});
+
+app.post('/subject/new', function (req, res) {
+    var obj = req.body;
+    sql.addSubject(obj, function (result) {
+       res.send(result);
+    });
 });
 

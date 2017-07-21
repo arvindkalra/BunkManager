@@ -6,7 +6,6 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="CSS/headings.css">
-    <link rel="stylesheet" href="CSS/stars.css">
     <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
     <link rel="stylesheet" href="CSS/indexpage.css">
     <link rel="stylesheet" href="CSS/subjects.css">
@@ -15,22 +14,14 @@
     <link rel="stylesheet" href="CSS/incdec.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
-
+    <link href="CSS/hover-card.css" rel="stylesheet">
+<style>
+    body{
+        background-color: whitesmoke;
+    }
+</style>
 </head>
 <body>
-
-
-<div id="space" >
-    <div class="stars"></div>
-    <div class="stars"></div>
-    <div class="stars"></div>
-    <div class="stars"></div>
-    <div class="stars"></div>
-    <div class="stars"></div>
-    <div class="stars"></div>
-</div>
-
-
 
 <div class="headbox card">
     <div class="heading">
@@ -58,46 +49,15 @@
                 </div>
             </div>
             <div class="subjentry">
-                <div class="subject">
+                <div class="subject hover-card" data-toggle="modal" data-target=".adsub">
                     <div class = "classcolor"></div>
                     <div class="lines">
                     <div class="firstline">
                         <div class="subjname" id="chemistry">Chemistry</div>
                         <div id="chemistry%age" class="age-">75%</div>
                     </div>
-
                     <div class="second">
-                    <div class="ta">Total Attended :&nbsp;</div>
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button type="button" class="quantity-left-minusta btn btn-danger btn-number"  data-type="minus" data-field="">
-                                <span class="glyphicon glyphicon-minus"></span>
-                            </button>
-                        </span>
-                        <input type="text" id="quantityta" name="quantity" class="form-control input-number inpbox" value="10" min="1" max="100">
-                        <span class="input-group-btn">
-                            <button type="button" class="quantity-right-plusta btn btn-success btn-number" data-type="plus" data-field="">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>
-                    </div>
-                    </div>
-
-                    <div class="third">
-                    <div class="tb">Total Bunked :&nbsp;</div>
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button type="button" class="quantity-left-minustb btn btn-danger btn-number"  data-type="minus" data-field="">
-                                <span class="glyphicon glyphicon-minus"></span>
-                            </button>
-                        </span>
-                        <input type="text" id="quantitytb" name="quantity" class="form-control input-number inpbox" value="10" min="1" max="100">
-                        <span class="input-group-btn">
-                            <button type="button" class="quantity-right-plustb btn btn-success btn-number" data-type="plus" data-field="">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>
-                    </div>
+                        <div> Safe Bunks Available :&nbsp;&nbsp;<span id = "chemistrysafebunks">2</span></div>
                     </div>
                     </div>
                 </div>
@@ -116,6 +76,55 @@
     </div>
 </div>
 
+<!--Attendance addn and subtraction modal-->
+<div class="modal fade adsub" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="Attendance">Current Status (&nbsp;<span id="ChemistryModal">CHEMISTRY</span>&nbsp;)</h2>
+            </div>
+            <div class="modal-body">
+                <div class="sec">
+                    <div class="ta">Total Attended :&nbsp;</div>
+                        <div class="input-group taip">
+                            <span class="input-group-btn">
+                                <button type="button" class="quantity-left-minusta btn btn-danger btn-number"  data-type="minus" data-field="">
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                </button>
+                            </span>
+                            <input type="text" id="quantityta" name="quantity" class="form-control input-number inpbox" value="10" min="1" max="100">
+                            <span class="input-group-btn">
+                                <button type="button" class="quantity-right-plusta btn btn-success btn-number" data-type="plus" data-field="">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                <div class="thir">
+                    <div class="tb">Total Bunked :&nbsp;</div>
+                        <div class="input-group tbip">
+                            <span class="input-group-btn">
+                                <button type="button" class="quantity-left-minustb btn btn-danger btn-number"  data-type="minus" data-field="">
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                </button>
+                            </span>
+                            <input type="text" id="quantitytb" name="quantity" class="form-control input-number inpbox" value="10" min="1" max="100">
+                            <span class="input-group-btn">
+                                <button type="button" class="quantity-right-plustb btn btn-success btn-number" data-type="plus" data-field="">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+</div>
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog modal-sm" role="document">
@@ -143,6 +152,7 @@
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="JS/subjectcard.js"></script>
 <script src="JS/incdec.js"></script>
 
 </body>

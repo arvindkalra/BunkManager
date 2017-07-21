@@ -1,0 +1,24 @@
+.hover-card{
+    box-shadow: 12px 15px 20px 0 rgba(46,61,73,.15);
+    transition: all .3s ease;
+    margin-bottom: 30px!important;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+}
+.firstline{
+    margin-top: 1%;
+    margin-left: 5%;
+}
+.second{
+    margin-top: 1%;
+    margin-left: 5%;
+    font-size: 2.5vh;
+}
+.hover-card:hover{
+    box-shadow: 0 4px 8px 0 rgba(46,61,73,.12);
+}
+.modal-sm{
+    width: 40%;
+}
