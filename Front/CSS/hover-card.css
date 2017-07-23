@@ -5,20 +5,38 @@
     background-color: #f2f2f2;
     border-radius: 5px;
     border: 1px solid #e0e0e0;
-    cursor: pointer;
 }
 .firstline{
-    margin-top: 1%;
-    margin-left: 5%;
+    cursor: pointer;
+    margin: 3% 0;
+}
+.firstline .subjname{
+    padding: 0 0 0 18px;
 }
 .second{
-    margin-top: 1%;
-    margin-left: 5%;
-    font-size: 2.5vh;
+    margin-top: 1px;
+    background-color: #c6ff00;
 }
 .hover-card:hover{
     box-shadow: 0 4px 8px 0 rgba(46,61,73,.12);
 }
 .modal-sm{
     width: 40%;
+}
+.trashbtn{
+    margin: 1vh 4px 1vh 0;
+    float: right;
+}
+.safeclss{
+    display: inline-block;
+    font-weight: bold;
+    padding: 9px 9px 9px 18px;
+    font-size: 2.5vh;
+}
+.trash{
+    float: right;
+    padding-right: 15px;
+    padding-top: 6px;
+    font-size: 4vh;
+    cursor: pointer;
 }

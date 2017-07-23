@@ -15,9 +15,11 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
     <link href="CSS/hover-card.css" rel="stylesheet">
+    <link href="CSS/removeFromPage.css" rel="stylesheet">
 <style>
     body{
         background-color: whitesmoke;
+        margin: 8px;
     }
 </style>
 </head>
@@ -48,19 +50,24 @@
                     </button>
                 </div>
             </div>
-            <div class="subjentry">
-                <div class="subject hover-card" data-toggle="modal" data-target=".adsub">
-                    <div class = "classcolor"></div>
-                    <div class="lines">
-                    <div class="firstline">
-                        <div class="subjname" id="chemistry">Chemistry</div>
-                        <div id="chemistry%age" class="age-">75%</div>
-                    </div>
-                    <div class="second">
-                        <div> Safe Bunks Available :&nbsp;&nbsp;<span id = "chemistrysafebunks">2</span></div>
-                    </div>
-                    </div>
-                </div>
+            <div class="subjentry" id="subjsbox">
+                <!--Subject Start-->
+                <!--<div class="subject hover-card" id="CHEMISTRYcard" data-toggle="modal" data-target=".adsub">-->
+                    <!--<div class = "classcolor"></div>-->
+                    <!--<div class="lines">-->
+                    <!--<div class="firstline">-->
+                        <!--<div class="subjname" id="chemistry">Chemistry</div>-->
+                        <!--<div id="chemistry%age" class="age-">75%</div>-->
+                    <!--</div>-->
+                    <!--<div class="second">-->
+                        <!--<div class="safeclss"> Safe Bunks Available :&nbsp;&nbsp;<span id = "chemistrysafebunks">2</span></div>-->
+                        <!--<button type="button" class="btn trashbtn" id="CHEMISTRYtrash">-->
+                            <!--<span class="glyphicon glyphicon-trash"></span> Trash-->
+                        <!--</button>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--Subject End-->
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-12 smallbox2">
@@ -152,8 +159,8 @@
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="JS/subjectcard.js"></script>
+<script src="JS/newpage.js"></script>
+<script src="JS/subjadd.js"></script>
 <script src="JS/incdec.js"></script>
-
 </body>
 </html>

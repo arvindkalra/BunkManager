@@ -15,7 +15,8 @@
     font-size: 3.5vh;
     display: inline-block;
     font-family: 'Lemonada', cursive;
-    margin-left: 50%;
+    float: right;
+    padding-right: 20px;
     color: #00c853;
 }
 .input-group{

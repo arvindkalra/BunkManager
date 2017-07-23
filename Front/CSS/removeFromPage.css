@@ -1,0 +1,15 @@
+.remove{
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+@keyframes fadeOut {
+    0%{
+        display: block;
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        display: none;
+    }
+}

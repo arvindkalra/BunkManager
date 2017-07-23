@@ -43,6 +43,18 @@ app.post('/write', function (req, res) {
     res.send("");
 });
 
+app.get('/subject/start', function (req, res) {
+    sql.initialize(function (result) {
+       res.send(result);
+    });
+});
+
+app.post('/subject/remove', function (req, res) {
+    var obj = req.body;
+    res.send("");
+    sql.removeSubject(obj);
+});
+
 app.post('/subject/new', function (req, res) {
     var obj = req.body;
     sql.addSubject(obj, function (result) {
