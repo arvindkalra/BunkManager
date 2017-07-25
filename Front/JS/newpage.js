@@ -50,6 +50,7 @@ function makeBox(val) {
     var perele = "#"+name+"age";
     $('#quantityta').val("Hold...");
     $('#quantitytb').val("Hold...");
+    var x = true;
     $.post('/subject/forbox', {subject : name}, function (res) {
         var oattended = res.attend;
         var obunked = res.bunk;
@@ -58,24 +59,30 @@ function makeBox(val) {
         $('#save').click(function () {
             var attended = $('#quantityta').val();
             var bunked = $('#quantitytb').val();
-            $.post('/subject/update', {subject:name, attended:attended, bunked: bunked}, function (res) {
-                var saves = res.safe;
-                var percent = res.percentage;
-                var tpercent = res.tpercent;
-                $('#oper').text(tpercent+"%");
-                if(tpercent < 75){
-                    $('#oper').css({"color" : "#f44336"})
-                }else{
-                    $('#oper').css({"color" : "#00c853"})
-                }
-                $(saveele).text(saves);
-                $(perele).text(percent+"%");
-                if(percent<75){
-                    $(perele).css({"color":"#f44336"})
-                }else{
-                    $(perele).css({"color":"#00c853"})
-                }
-            });
+            if(x) {
+                $.post('/subject/update', {subject: name, attended: attended, bunked: bunked}, function (res) {
+                    var saves = res.safe;
+                    var percent = res.percentage;
+                    var tpercent = res.tpercent;
+                    if(tpercent === null){
+                        tpercent = 0;
+                    }
+                    $('#oper').text(tpercent + "%");
+                    if (tpercent < 75) {
+                        $('#oper').css({"color": "#f44336"})
+                    } else {
+                        $('#oper').css({"color": "#00c853"})
+                    }
+                    $(saveele).text(saves);
+                    $(perele).text(percent + "%");
+                    if (percent < 75) {
+                        $(perele).css({"color": "#f44336"})
+                    } else {
+                        $(perele).css({"color": "#00c853"})
+                    }
+                    x = false;
+                });
+            }
         });
     });
 }

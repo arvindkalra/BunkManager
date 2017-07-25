@@ -4,14 +4,23 @@
 }
 
 .subjectT{
+    margin-top: 20px;
     height: 7vh;
-    margin-top: 2%;
-    width: auto;
+    width: 98%;
     display: block;
-    background-color: white;
-    position: relative;
+    background-color: #f2f2f2;
+    box-shadow: 12px 15px 20px 0 rgba(46,61,73,.15);
+    margin-bottom: 30px!important;
+    transition: all .3s ease;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
 }
-.class{
+
+.subjectT:hover{
+    box-shadow: 0 4px 8px 0 rgba(46,61,73,.12);
+}
+
+.classT{
     margin-left: 1%;
     margin-top: 0.5%;
     vertical-align: top;
@@ -19,14 +28,17 @@
     display: inline-block;
     font-family: 'Zilla Slab', serif;
 }
+
 .classcolorT{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
     display: inline-block;
     height:7vh !important;
     width: 7%;
     height: auto;
 }
+
 .timeT{
-    color: #f44336;
     margin-top: 0.5%;
     vertical-align: top;
     height:inherit;

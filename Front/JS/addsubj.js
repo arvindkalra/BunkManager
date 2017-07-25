@@ -22,7 +22,7 @@ start(function (obj) {
                 "<div class = 'classcolor " + nameasli + "color'></div>" +
                 "<div class='class' id='" + now.toda + nameasli + "'>" + nameasli + "</div>" +
                 "<div id='"+ now.toda + nameasli + "time' class='time'><span class='from'>" + from + "</span>&nbsp;to&nbsp;<span class='to'>" + to + "</span></div>" +
-                "</div>")
+                "</div>");
             var classname = "." + nameasli + "color";
             $(classname).css({"background-color": "" + color + ""});
         }

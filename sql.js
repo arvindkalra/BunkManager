@@ -24,6 +24,7 @@ function getSubjectsnColors(callback){
 function update(obj, callback) {
     var attend = parseInt(obj.attended);
     var bunk = parseInt(obj.bunked);
+    console.log("ATT = " + attend + ", BUNK = " + bunk);
     var name = obj.subject;
     var total = attend + bunk;
     var percent = (attend / total) * 100;
@@ -166,7 +167,6 @@ function addSubject(obj, callback) {
                 tpercent = Math.round(tpercent * 100) / 100;
                 rv.tpercent = tpercent;
                 var query3 = "UPDATE subjects SET attended=" + attend + ",bunked=" + bunk + ",total=" + total + ",percent=" + tpercent + " WHERE subname='TOTAL'";
-                console.log(query3);
                 connection.query(query3, function (err) {
                     if(err){throw err}
                     connection.end();
