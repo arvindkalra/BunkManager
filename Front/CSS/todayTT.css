@@ -1,0 +1,36 @@
+.today{
+    color: black;
+    font-size: 4vh;
+}
+
+.subjectT{
+    height: 7vh;
+    margin-top: 2%;
+    width: auto;
+    display: block;
+    background-color: white;
+    position: relative;
+}
+.class{
+    margin-left: 1%;
+    margin-top: 0.5%;
+    vertical-align: top;
+    height:inherit;
+    display: inline-block;
+    font-family: 'Zilla Slab', serif;
+}
+.classcolorT{
+    display: inline-block;
+    height:7vh !important;
+    width: 7%;
+    height: auto;
+}
+.timeT{
+    color: #f44336;
+    margin-top: 0.5%;
+    vertical-align: top;
+    height:inherit;
+    float: right;
+    margin-right: 2%;
+    font-family: 'Anton', sans-serif;
+}

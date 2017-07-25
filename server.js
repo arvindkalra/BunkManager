@@ -51,8 +51,30 @@ app.get('/subject/start', function (req, res) {
 
 app.post('/subject/remove', function (req, res) {
     var obj = req.body;
-    res.send("");
-    sql.removeSubject(obj);
+    sql.removeSubject(obj, function (result) {
+        res.send(result);
+    });
+    fs.removeSubject(req.body.subject);
+});
+
+app.get("/subject/getSNC", function (req, res) {
+    sql.getSnC(function (result) {
+        res.send(result);
+    })
+});
+
+app.post('/subject/forbox', function (req, res) {
+    var obj = req.body;
+    sql.forBox(obj, function (response) {
+        res.send(response);
+    });
+});
+
+app.post('/subject/update', function (req, res) {
+    var obj = req.body;
+    sql.update(obj, function (result) {
+        res.send(result);
+    });
 });
 
 app.post('/subject/new', function (req, res) {

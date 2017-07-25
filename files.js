@@ -44,7 +44,27 @@ function readFile(callBack) {
 
 }
 
+function removeSubjects(name) {
+    fs.readFile('tt.json', function (err, data) {
+        if(err){throw err}
+        if(data != undefined){
+            var obj = JSON.parse(data);
+            for(var i = 0; i < obj.length; i++){
+                for(var j = 0; j < obj[i].length; j++){
+                    if(obj[i][j].subject === name){
+                        obj[i].splice(j,1);
+                    }
+                }
+            }
+            fs.writeFile('tt.json',JSON.stringify(obj),function(req,res) {
+                console.log("File is written");
+            });
+        }
+    });
+}
+
 module.exports = {
+    removeSubject : removeSubjects,
     read : readFile,
     write: writeFile,
     init : init

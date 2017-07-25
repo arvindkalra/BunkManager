@@ -6,10 +6,6 @@
     max-height: 100vh;
     margin-bottom: 2vh;
 }
-/*.subjentry{*/
-    /*max-height: 90vh;*/
-    /*overflow: auto;*/
-/*}*/
 .subjs{
     overflow: auto;
     height: 100vh;
@@ -32,7 +28,7 @@
     height: 34vh;
     max-height: 34vh;
     overflow: auto;
-    background-color: orange;
+    background-color: #fafafa;
 }
 .today{
     margin-top: 2vh;
@@ -43,5 +39,5 @@
     height: 64vh;
     max-height: 64vh;
     overflow: auto;
-    background-color: #c62828;
+    background-color: #fafafa;
 }

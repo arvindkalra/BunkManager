@@ -27,44 +27,54 @@ start(function (obj) {
             $(classname).css({"background-color": "" + color + ""});
         }
     }
-})
+});
 
 $(function () {
     var currday = 0;
 
     $('#monbtn').click(function () {
         currday = 0;
-        addsubj();
+        callForList()
     });
 
     $('#tuebtn').click(function () {
         currday = 1;
-        addsubj();
+        callForList()
     });
 
     $('#wedbtn').click(function () {
         currday = 2;
-        addsubj();
+        callForList()
     });
 
     $('#thubtn').click(function () {
         currday = 3;
-        addsubj();
+        callForList()
     });
 
     $('#fribtn').click(function () {
         currday = 4;
-        addsubj();
+        callForList()
     });
 
-    function addsubj() {
+    function callForList() {
+        $.get('/subject/getSNC', function (response) {
+            for(var i = 0; i < response.length; i++){
+                var name = response[i].subname;
+                if(name === "TOTAL"){
+                    continue;
+                }
+                $('#subjectname').append("<option>"+name+"</option>");
+            }
+            addsubj(response);
+        });
+    }
+
+    function addsubj(response) {
         var objtbu = {};
         $('#addbtn').click(function () {
             var name = $('#subjectname').val();
-            $('#subjectname').val("");
-            if (name.length == 0) {
-                return;
-            }
+            $('#subjectname').text("");
             var nameasli = name.toUpperCase();
             objtbu.subj = nameasli;
             var from = $('#from').val();
@@ -73,25 +83,37 @@ $(function () {
             var to = $('#to').val();
             $('#to').val("");
             objtbu.t = to;
-            var color = $('#colorinput').val();
-            objtbu.col = color;
-            var now = getTodayVals(currday);
-            objtbu.day = currday;
-            now.divt.append("<div class='subject'>" +
-                "<div class = 'classcolor " + nameasli + "color'></div>" +
-                "<div class='class' id='" + now.toda + nameasli + "'>" + nameasli + "</div>" +
-                "<div id='"+ now.toda + nameasli + "time' class='time'><span class='from'>" + from + "</span>&nbsp;to&nbsp;<span class='to'>" + to + "</span></div>" +
-                "</div>");
-            var classname = "." + nameasli + "color";
-            $(classname).css({"background-color": "" + color + ""});
-            $.post('/write', objtbu, function (result) {
-                console.log("written from client");
+            getColor(name, response, function (color) {
+                objtbu.col = color;
+                var now = getTodayVals(currday);
+                objtbu.day = currday;
+                now.divt.append("<div class='subject'>" +
+                    "<div class = 'classcolor " + nameasli + "color'></div>" +
+                    "<div class='class' id='" + now.toda + nameasli + "'>" + nameasli + "</div>" +
+                    "<div id='"+ now.toda + nameasli + "time' class='time'><span class='from'>" + from + "</span>&nbsp;to&nbsp;<span class='to'>" + to + "</span></div>" +
+                    "</div>");
+                var classname = "." + nameasli + "color";
+                $(classname).css({"background-color": "" + color + ""});
+                $.post('/write', objtbu, function (result) {
+                    console.log("written from client");
+                })
             })
-        })
 
+        });
     }
-
 });
+
+function getColor(name, res, callback) {
+    var rv = "";
+    for(var i = 0; i < res.length; i++){
+        var cnm = res[i].subname;
+        if(cnm === name){
+            rv = res[i].color;
+            break;
+        }
+    }
+    callback(rv);
+}
 
 function getTodayVals(today){
     var rv = {};

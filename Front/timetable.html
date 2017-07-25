@@ -6,27 +6,18 @@
     <link rel="stylesheet" href="CSS/TimeTable.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/stars.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
     <link rel="stylesheet" href="CSS/modal.css">
     <link rel="stylesheet" href="CSS/headings.css">
-
+<style>
+    body{
+        margin: 8px;
+    }
+</style>
 </head>
 <body>
-
-<div id="space" >
-    <div class="stars"></div>
-    <div class="stars"></div>
-    <div class="stars"></div>
-    <div class="stars"></div>
-    <div class="stars"></div>
-    <div class="stars"></div>
-    <div class="stars"></div>
-</div>
-
-
 
 <div class="headbox card">
     <div class="heading">
@@ -36,7 +27,6 @@
     <div class="navloc">
         <a href="index.html" style="text-decoration: none; color: black"><div>HOME</div></a>
         <a href="#" style="text-decoration: none; color: black"><div>TIME TABLE</div></a>
-        <div>LOG OUT</div>
     </div>
 </div>
 
@@ -115,12 +105,13 @@
             </div>
 
             <div class="modal-body">
-                <input type="text" class="form-control" id="subjectname" placeholder="Subject Name" required>
+                <label for="subjectname">Select Subject:</label>
+                <select class="form-control" id="subjectname">
+                  <!---->
+                </select>
                 <div class="lab">TIME : </div>
                 <input type="text" class="form-control" id="from" placeholder="FROM (HH:MM)" required>
                 <input type="text" class="form-control" id="to" placeholder="TO (HH:MM)" required>
-                <div class="lab">COLOR : </div>
-                <input class="form-control" type="color" value="#563d7c" id="colorinput">
             </div>
             <div class="modal-footer">
                 <button id = "addbtn" type="button" class="btn btn-success" data-dismiss="modal">ADD</button>

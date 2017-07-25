@@ -1,0 +1,14 @@
+.operlabel{
+    margin-top: 1vh;
+    font-size: 8vh;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    background-color: #bbdefb;
+    border-radius: 5px;
+}
+.oper{
+    margin-top: 2vh;
+    font-size: 11vh;
+    text-align: center;
+    font-family: 'Lemonada', cursive;
+}

@@ -10,13 +10,108 @@ var dbconfig = {
     database : 'Bunks'
 };
 
-function removeSubject(obj) {
+function getSubjectsnColors(callback){
+    var connection = sql.createConnection(dbconfig);
+    connection.connect();
+    var query = "SELECT subname, color FROM subjects";
+    connection.query(query, function (err, result) {
+        if(err){throw err}
+        connection.end();
+        callback(result);
+    })
+}
+
+function update(obj, callback) {
+    var attend = parseInt(obj.attended);
+    var bunk = parseInt(obj.bunked);
+    var name = obj.subject;
+    var total = attend + bunk;
+    var percent = (attend / total) * 100;
+    percent = Math.round(percent * 100)/100;
+    getSafe(total, attend, function (safe) {
+    var connection = sql.createConnection(dbconfig);
+    connection.connect();
+    var query1 = "SELECT * FROM subjects WHERE subname='"+name+"'";
+    connection.query(query1, function (err, result) {
+        if(err){throw err}
+        var oattend = result[0].attended;
+        var obunk = result[0].bunked;
+        var ototal = result[0].total;
+        var query2 = "SELECT * FROM subjects WHERE subname = 'TOTAL'";
+        connection.query(query2, function (err1, ans) {
+            if(err1){throw err1}
+            nbunked = ans[0].bunked - obunk + bunk;
+            nattended = ans[0].attended - oattend + attend;
+            ntotal = ans[0].total - ototal + total;
+            var tpercent = (nattended / ntotal) * 100;
+            tpercent = Math.round(tpercent * 100)/100;
+            var query3 = "UPDATE subjects SET attended=" + nattended + ",bunked=" + nbunked + ",total=" + ntotal + ",percent=" + tpercent + " WHERE subname='TOTAL'";
+            connection.query(query3, function (err2, res) {
+                if(err2){throw err2}
+                var query = "UPDATE subjects SET attended="+attend+", bunked="+bunk+", total="+total+", percent="+percent+", safe="+safe+" WHERE subname='"+name+"'";
+                connection.query(query, function (result) {
+                    connection.end();
+                    var rv = {
+                        safe : safe,
+                        percentage : percent,
+                        tpercent : tpercent
+                    };
+                    callback(rv);
+                });
+            })
+        })
+    });
+});
+}
+
+function forBox(obj, callback) {
+    var connection = sql.createConnection(dbconfig);
+    connection.connect();
+    var sbjtbg = obj.subject;
+    var query = "SELECT * FROM subjects WHERE subname='"+sbjtbg+"'";
+    connection.query(query, function (err, result) {
+        if(err){throw err}
+        connection.end();
+        var rv = {
+            attend : result[0].attended,
+            bunk   : result[0].bunked
+        };
+        callback(rv);
+    })
+}
+
+function removeSubject(obj, callback) {
+    var rv = 0;
     var connection = sql.createConnection(dbconfig);
     connection.connect();
     var sbjtbr = obj.subject;
-    var query = "DELETE FROM subjects WHERE subname='"+sbjtbr+"'";
-    connection.query(query);
-    connection.end();
+    var query1 = "SELECT * FROM subjects WHERE subname='"+sbjtbr+"'";
+    connection.query(query1, function (err, result) {
+       var res = result[0];
+       var oldtot = res.total;
+       var oldbunk = res.bunked;
+       var oldatten = res.attended;
+       var query4 = "SELECT * FROM subjects WHERE subname='TOTAL'";
+       connection.query(query4, function (err, result2) {
+          var res2 = result2[0];
+          var attend = res2.attended - oldatten;
+          var bunk = res2.bunked - oldbunk;
+          var total = res2.total - oldtot;
+          var percent = (attend/ total) * 100;
+          percent = Math.round(percent * 100)/100;
+          var query3 = "UPDATE subjects SET attended="+attend+", bunked="+bunk+", total="+total+", percent="+percent+" WHERE subname='TOTAL'";
+          connection.query(query3,function () {
+              rv = {
+                  tpercent : percent
+              };
+              var query2 = "DELETE FROM subjects WHERE subname='"+sbjtbr+"'";
+              connection.query(query2, function () {
+                  callback(rv);
+              });
+              connection.end();
+          })
+       });
+    });
 }
 
 function initialize(callback) {
@@ -43,30 +138,44 @@ function initialize(callback) {
     })
 }
 
-
 function addSubject(obj, callback) {
     var subjectname = obj.subj;
     var attended = parseInt(obj.atten);
     var bunked = parseInt(obj.bunk);
     var total = attended + bunked;
     var percent = (attended / total) * 100;
-    percent = Math.round(percent * 100)/100;
+    percent = Math.round(percent * 100) / 100;
     var color = obj.color;
     getSafe(total, attended, function (safe) {
         var connection = sql.createConnection(dbconfig);
-
         connection.connect();
         console.log("SQL Connected");
-        var query = "INSERT INTO subjects (subname, attended, bunked, total, percent, safe, color) VALUES('"+subjectname+"', "+attended+", "+bunked+", "+total+", "+percent+", "+safe+", '"+color+"')";
+        var query = "INSERT INTO subjects (subname, attended, bunked, total, percent, safe, color) VALUES('" + subjectname + "', " + attended + ", " + bunked + ", " + total + ", " + percent + ", " + safe + ", '" + color + "')";
         connection.query(query, function (error, result) {
-            connection.end();
             var rv = {
-                safe : safe,
-                percentage : percent
+                safe: safe,
+                percentage: percent
             };
-            callback(rv);
+            var query4 = "SELECT * FROM subjects WHERE subname='TOTAL'";
+            connection.query(query4, function (err, result2) {
+                var res2 = result2[0];
+                var attend = res2.attended + attended;
+                var bunk = res2.bunked + bunked;
+                var total = attend + bunk;
+                var tpercent = (attend / total) * 100;
+                tpercent = Math.round(tpercent * 100) / 100;
+                rv.tpercent = tpercent;
+                var query3 = "UPDATE subjects SET attended=" + attend + ",bunked=" + bunk + ",total=" + total + ",percent=" + tpercent + " WHERE subname='TOTAL'";
+                console.log(query3);
+                connection.query(query3, function (err) {
+                    if(err){throw err}
+                    connection.end();
+                    callback(rv);
+                });
+
+            });
         });
-    })
+    });
 }
 
 function getSafe(tot, atten, cb){
@@ -83,7 +192,10 @@ function getSafe(tot, atten, cb){
 }
 
 module.exports = {
-  addSubject : addSubject,
-  initialize : initialize,
-  removeSubject : removeSubject
+    update : update,
+    forBox : forBox,
+    addSubject : addSubject,
+    initialize : initialize,
+    removeSubject : removeSubject,
+    getSnC :getSubjectsnColors
 };
