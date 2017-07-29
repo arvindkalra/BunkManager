@@ -5,17 +5,21 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const fs = require('./files.js');
-const sql = require('./sql');
+// const sql = require('./sql');
+const sql = require('./mongoConnections');
 
 app.use('/', express.static('Front'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.listen(4000 || process.env.port, function (err) {
-    if(err){
-        throw err;
-    }
-    console.log("Server is Running on Port Number : 4000");
+sql.connectDb(function () {
+    app.listen(4000 || process.env.port, function (err) {
+        if(err){
+            throw err;
+        }
+        console.log("Server is Running on Port Number : 4000");
+    });
+
 });
 
 app.post('/init', function (req,res) {

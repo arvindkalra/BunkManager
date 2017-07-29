@@ -72,15 +72,15 @@ button{
     background-color: #f5a5a8;
 }
 
-@media screen and (max-width: 730px){
-    .heading{
-        width: 90%;
-    }
-    .box{
-        width:90%;
-        left: 5%;
-    }
-}
+/*@media screen and (max-width: 730px){*/
+    /*.heading{*/
+        /*width: 90%;*/
+    /*}*/
+    /*.box{*/
+        /*width:90%;*/
+        /*left: 5%;*/
+    /*}*/
+/*}*/
 
 #inbtn, #upbtn{
     cursor: pointer;
