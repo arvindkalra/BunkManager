@@ -4,7 +4,11 @@
 
 function start(callback) {
     $.post('/read',{},function (result) {
+        if(result === false){
+            window.location.replace('index.html');
+        }else{
         callback(result);
+        }
     })
 }
 
