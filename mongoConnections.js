@@ -25,15 +25,24 @@ function createNewCollection(object, callback) {
     var sn = object.sn;
     var email = object.email;
     var password = object.password;
-    obj.collection('userpass').insertOne({fn : fn, sn : sn, username : email, password : password});
-    obj.collection('userpass').findOne({fn : fn}, function (err, result) {
-        if(err){throw err}
-        var id = result._id;
-        id = id.toString();
-        console.log(id);
-        obj.collection("datas").insertOne({id : id, subjects:subsinital, timetable:ttinitial});
-        callback();
+    obj.collection('userpass').findOne({username : email}, function (err, result) {
+       if(err){throw err}
+       if(result === null){
+           obj.collection('userpass').insertOne({fn : fn, sn : sn, username : email, password : password}, function () {
+               obj.collection('userpass').findOne({username : email}, function (err, result) {
+                   if(err){throw err}
+                   var id = result._id;
+                   var newid = id.toString();
+                   console.log(newid);
+                   obj.collection("datas").insertOne({id : newid, subjects:subsinital, timetable:ttinitial});
+                   callback(true);
+               });
+           });
+       }else{
+           callback(false)
+       }
     });
+
 }
 
 function findUserName(username, callback) {
@@ -98,7 +107,9 @@ function findsbjobj(arr, name, callback) {
 }
 
 function getAllSubjects(id, callback) {
+    console.log(id+"******");
     obj.collection("datas").findOne({id : id}, function (err , result) {
+        console.log(result);
         if (err) {
             throw err
         }
@@ -234,6 +245,51 @@ function getSubjectsnColors(id ,callback) {
     });
 }
 
+function writeFile(id, day,subj,from,to,col,sobj) {
+    var otba = {
+        "subject" : subj,
+        "from" : from,
+        "to" : to,
+        "color":col
+    };
+    sobj[day].push(otba);
+    obj.collection('datas').findOne({id : id}, function (err, result) {
+        if(err){throw err}
+        var arrcopy = result.subjects;
+        obj.collection('datas').updateOne({id : id}, {id : id, subjects : arrcopy, timetable : sobj}, function (err, res) {
+            console.log("File Written...");
+        });
+    });
+
+}
+
+function readFile(id, callback) {
+    obj.collection('datas').findOne({id : id}, function (err, result) {
+        console.log(result);
+        if(err){throw err}
+        var tt = result.timetable;
+        callback(tt);
+    })
+}
+
+function removeSubjects(id, name) {
+   obj.collection('datas').findOne({id : id}, function (err, result) {
+       if(err){throw err}
+       var sbjcopy = result.subjects;
+       var tt = result.timetable;
+       for(var i = 0; i < tt.length; i++){
+           for(var j = 0; j < tt[i].length; j++){
+               if(tt[i][j].subject === name){
+                   tt[i].splice(j,1);
+               }
+           }
+       }
+       obj.collection('datas').updateOne({id : id}, {id : id, subjects: sbjcopy, timetable : tt}, function () {
+           console.log("File Written...")
+       });
+   })
+}
+
 module.exports = {
     update : update,
     forBox : forBox,
@@ -244,5 +300,8 @@ module.exports = {
     NewUser : createNewCollection,
     connectDb : connectDB,
     findUserName : findUserName,
-    checkPassword : checkPassword
+    checkPassword : checkPassword,
+    write : writeFile,
+    read : readFile,
+    rS : removeSubjects
 };

@@ -6,6 +6,9 @@ beforeLoad();
 
 function beforeLoad() {
     $.get('/subject/start', function (res) {
+        if(res === false){
+            window.location.replace('index.html');
+        }else{
         for(var i = 0; i < res.length; i++) {
             var subname = res[i].subjname;
             if(subname === "TOTAL"){
@@ -38,6 +41,7 @@ function beforeLoad() {
             if(percent < 75){
                 $(percele).css({"color":"#f44336"})
             }
+        }
         }
     });
 

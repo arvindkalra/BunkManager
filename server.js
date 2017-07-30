@@ -4,7 +4,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const fs = require('./files.js');
+// const fs = require('./files.js');
 // const sql = require('./sql');
 const sql = require('./mongoConnections');
 const passport = require('passport');
@@ -48,12 +48,12 @@ passport.use(new LocalStrategy(function (username, password, done) {
     });
 }));
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/good',
-        failureRedirect: '/',
-        failureFlash: true })
+app.post('/login', passport.authenticate('local', { successRedirect: '/done',
+        failureRedirect: '/notdone'})
 );
 
 passport.serializeUser(function(id, done) {
+    console.log(id);
     done(null, id);
 });
 
@@ -61,30 +61,40 @@ passport.deserializeUser(function(id, done) {
     done(null, id);
 });
 
+app.get('/notdone', function (req, res) {
+   console.log("Username Password is wrong");
+   res.send(false);
+});
+
+app.get('/done', function (req, res) {
+    console.log("Logged In... with " + req.user);
+    res.send(true);
+});
+
+app.get('/logout', function(req, res){
+    console.log("Do Logout");
+    req.logout();
+    res.send(true);
+});
+
 app.post('/signup', function (req, res) {
-    sql.NewUser(req.body, function () {
-        res.redirect('/');
+    sql.NewUser(req.body, function (bool) {
+        res.send(bool);
     })
 });
 
 function checkUser(req, res, next) {
-    console.log("Check");
+    console.log("Check"+ req.user);
     if(req.user){
         console.log("Allowed");
         next();
     }else{
         console.log("Not Allowed");
-        res.redirect('/');
+        res.send(false);
     }
 }
 
 app.use(checkUser);
-
-app.get('/good', function (req, res) {
-    console.log("Logged In... with " + req.user);
-    res.redirect('/2.html');
-});
-
 
 app.post('/init', function (req,res) {
     fs.init();
@@ -92,7 +102,8 @@ app.post('/init', function (req,res) {
 });
 
 app.post('/read',function (req,res) {
-    fs.read(function (obj) {
+    console.log(req.user);
+    sql.read(req.user, function (obj) {
         res.send(obj);
     });
 });
@@ -104,15 +115,15 @@ app.post('/write', function (req, res) {
     var from = req.body.f;
     var color = req.body.col;
 
-    fs.read(function (obj) {
-        fs.write(day,subject,from,to,color,obj);
+    sql.read(req.user, function (obj) {
+        sql.write(req.user, day,subject,from,to,color,obj);
     });
 
     res.send("");
 });
 
 app.get('/subject/start',  function (req, res) {
-    // console.log(req.user);
+    console.log(req.user);
     sql.initialize(req.user, function (result) {
        res.send(result);
     });
@@ -123,7 +134,7 @@ app.post('/subject/remove', function (req, res) {
     sql.removeSubject(req.user, obj, function (result) {
         res.send(result);
     });
-    fs.removeSubject(req.body.subject);
+    sql.rS(req.user, req.body.subject);
 });
 
 app.get("/subject/getSNC", function (req, res) {
