@@ -2,183 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BUNK MANAGER</title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="CSS/headings.css">
+    <link rel="stylesheet" href="CSS/MainPage.css">
     <link href="https://fonts.googleapis.com/css?family=Fresca" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/indexpage.css">
-    <link rel="stylesheet" href="CSS/subjects.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="CSS/incdec.css">
-    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
-    <link href="CSS/hover-card.css" rel="stylesheet">
-    <link href="CSS/removeFromPage.css" rel="stylesheet">
-    <link href="CSS/opercent.css" rel="stylesheet">
-    <link href="CSS/todayTT.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
-    <style>
+<style>
     body{
-        background-color: whitesmoke;
-        margin: 8px;
+        background-image: url("Images/signin.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .bodycover{
+        background-color: #eeeeee;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        left: 0px;
+        top:0px;
+        z-index: 10;
+        opacity: 0.5;
     }
 </style>
 </head>
 <body>
 
-<div class="headbox card">
+<div class="bodycover"></div>
+
+<div class="headbox">
     <div class="heading">
         BUNK MANAGER
     </div>
-
-    <div class="navloc">
-        <a href="#" style="text-decoration: none; color: black"><div>HOME</div></a>
-        <a href="timetable.html" style="text-decoration: none; color: black"><div>TIME TABLE</div></a>
-    </div>
 </div>
 
-<div class="container bigbox" style="width: 100% !important;">
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-12 subjs">
-            <div class="titlebox">
-                <div class="title">
-                    SUBJECTS
-                </div>
-                <div class="addbtn">
-                    <button id = "dbtn" type="button" class="btn btn-success btn-number plus add" data-type="plus" data-field="quant[2]" data-toggle="modal" data-target=".bs-example-modal-sm">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="subjentry" id="subjsbox">
-                <!--Subject Start-->
-                <!--<div class="subject hover-card" id="CHEMISTRYcard" data-toggle="modal" data-target=".adsub">-->
-                    <!--<div class = "classcolor"></div>-->
-                    <!--<div class="lines">-->
-                    <!--<div class="firstline">-->
-                        <!--<div class="subjname" id="chemistry">Chemistry</div>-->
-                        <!--<div id="chemistry%age" class="age-">75%</div>-->
-                    <!--</div>-->
-                    <!--<div class="second">-->
-                        <!--<div class="safeclss"> Safe Bunks Available :&nbsp;&nbsp;<span id = "chemistrysafebunks">2</span></div>-->
-                        <!--<button type="button" class="btn trashbtn" id="CHEMISTRYtrash">-->
-                            <!--<span class="glyphicon glyphicon-trash"></span> Trash-->
-                        <!--</button>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--Subject End-->
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-12 smallbox2">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 percentage">
-                        <div class="operlabel">Overall Percentage</div>
-                        <div class="oper" id="oper">0%</div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 today">
-                        <div class="operlabel">Today</div>
-                        <div class="subjects">
-                        <!--<div class="subjectT">-->
-                        <!--<div class = "classcolorT" style="background-color: #ff1ec8"></div>-->
-                        <!--<div class="classT" id="monmaths1">Maths</div>-->
-                        <!--<div id="monmathstime" class="timeT"><span class="from">08:00</span>&nbsp;to&nbsp;<span class="from">09:00</span></div>-->
-                        <!--</div>-->
+<button class="btn btn-default butn" data-toggle="modal" data-target="#myModal">SIGN IN || SIGN UP</button>
 
-                        <!--<div class="subjectT">-->
-                        <!--<div class = "classcolorT" style="background-color: #ff0e09"></div>-->
-                        <!--<div class="classT" id="monchemistry1">Chemistry</div>-->
-                        <!--<div id="monchemistrytime" class="timeT"><span class="from">09:00</span>&nbsp;to&nbsp;<span class="from">10:00</span></div>-->
-                        <!--</div>-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content box">
+                <ul class="nav nav-tabs">
+                    <li role="presentation"  id="inbtn" class="active"><a>Sign In</a></li>
+                    <li role="presentation"  id="upbtn"><a>Sign Up</a></li>
+                </ul>
+                <div class="inmenu">
+                    <div class="informo">
+                        <div class="inform">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <button type="submit" id="submitin" class="btn btn-success">Sign In</button>
                         </div>
                     </div>
                 </div>
-        </div>
+                <div class="upmenu">
+                    <div class="upformo">
+                        <div class="upform">
+                            <input type="text" class="form-control" id="firstname" placeholder="First Name" name="fn">
+                            <input type="text" class="form-control" id="lastname" placeholder="Last Name" name="sn">
+                            <input type="email" class="form-control" id="exampleInputEmail2" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="password" class="form-control" id="exampleInputPassword2" name="password" placeholder="Password">
+                            <button type="submit" class="btn btn-success" id="submitup">Sign Up </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 
-<!--Attendance addn and subtraction modal-->
-<div class="modal fade adsub" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h2 class="modal-title" id="Attendance">Current Status (&nbsp;<span id="ChemistryModal">CHEMISTRY</span>&nbsp;)</h2>
-            </div>
-            <div class="modal-body">
-                <div class="sec">
-                    <div class="ta">Total Attended :&nbsp;</div>
-                        <div class="input-group taip">
-                            <span class="input-group-btn">
-                                <button type="button" class="quantity-left-minusta btn btn-danger btn-number"  data-type="minus" data-field="">
-                                    <span class="glyphicon glyphicon-minus"></span>
-                                </button>
-                            </span>
-                            <input type="text" id="quantityta" name="quantity" class="form-control input-number inpbox" value="10" min="1" max="100">
-                            <span class="input-group-btn">
-                                <button type="button" class="quantity-right-plusta btn btn-success btn-number" data-type="plus" data-field="">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                <div class="thir">
-                    <div class="tb">Total Bunked :&nbsp;</div>
-                        <div class="input-group tbip">
-                            <span class="input-group-btn">
-                                <button type="button" class="quantity-left-minustb btn btn-danger btn-number"  data-type="minus" data-field="">
-                                    <span class="glyphicon glyphicon-minus"></span>
-                                </button>
-                            </span>
-                            <input type="text" id="quantitytb" name="quantity" class="form-control input-number inpbox" value="10" min="1" max="100">
-                            <span class="input-group-btn">
-                                <button type="button" class="quantity-right-plustb btn btn-success btn-number" data-type="plus" data-field="">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="save" data-dismiss="modal">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-                </div>
-            </div>
-        </div>
-</div>
-
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Add Subject</h4>
-            </div>
-
-            <div class="modal-body">
-                <input type="text" class="form-control" id="subjectname" placeholder="Subject Name" required>
-                <div class="lab">ATTENDANCE : </div>
-                <input type="number" class="form-control" id="total" placeholder="TOTAL" required>
-                <input type="number" class="form-control" id="bunk" placeholder="BUNKED" required>
-                <div class="lab">COLOR : </div>
-                <input class="form-control" type="color" value="#563d7c" id="colorinput">
-            </div>
-            <div class="modal-footer">
-                <button id = "addbtn" type="button" class="btn btn-success" data-dismiss="modal">ADD</button>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="JS/newpage.js"></script>
-<script src="JS/subjadd.js"></script>
-<script src="JS/incdec.js"></script>
-<script src="JS/todaytt.js"></script>
+<script src="JS/Logout.js"></script>
+<script src="JS/SignUpFront.js"></script>
 </body>
 </html>

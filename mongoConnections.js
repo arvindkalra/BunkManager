@@ -7,7 +7,7 @@ var db = require('mongodb').MongoClient;
 var url = "mongodb://arvind:akalra@ds127443.mlab.com:27443/bunkmanager"
 
 var obj = "";
-var subsinital = [{name : "total", attended : 0, bunked: 0, total:0, percent:0}];
+var subsinital = [{name : "TOTAL", attended : 0, bunked: 0, total:0, percent:0}];
 var ttinitial = [[],[],[],[],[]];
 
 function connectDB(run_server) {
@@ -15,13 +15,43 @@ function connectDB(run_server) {
         if(err){throw err}
         console.log("Connected to Mlabs...");
         obj = database;
+        // obj.collection('userpass').insertOne({"task":1});
         run_server();
     })
 }
 
-function createNewCollection(id) {
-    obj.collection("datas").insertOne({id : id, subjects:subsinital, timetable:ttinitial});
-    // callback();
+function createNewCollection(object, callback) {
+    var fn = object.fn;
+    var sn = object.sn;
+    var email = object.email;
+    var password = object.password;
+    obj.collection('userpass').insertOne({fn : fn, sn : sn, username : email, password : password});
+    obj.collection('userpass').findOne({fn : fn}, function (err, result) {
+        if(err){throw err}
+        var id = result._id;
+        id = id.toString();
+        console.log(id);
+        obj.collection("datas").insertOne({id : id, subjects:subsinital, timetable:ttinitial});
+        callback();
+    });
+}
+
+function findUserName(username, callback) {
+    obj.collection("userpass").findOne({username: username}, function (err, result) {
+        if(err){throw err}
+        callback(result);
+    })
+}
+
+function checkPassword(username, password, callback) {
+    obj.collection("userpass").findOne({username : username}, function (err, result) {
+        if(err){throw err}
+        if(result.password === password){
+            callback(true, result._id);
+        }else{
+            callback(false);
+        }
+    })
 }
 
 function addNewSubject(id, sbjobj, callback) {
@@ -32,13 +62,14 @@ function addNewSubject(id, sbjobj, callback) {
     var total = attended + bunked;
     var percent = (attended / total) * 100;
     percent = Math.round(percent * 100) / 100;
-    rv.percent = percent;
+    rv.percentage = percent;
     var color = sbjobj.color;
     getSafe(total, attended, function (safe) {
         rv.safe = safe;
        var objtba =  {name : subjectname, attended : attended, bunked: bunked, total: total, percent: percent, color: color, safe: safe};
        // obj.collection("datas").updateOne({id: id}, {$push : {subjects : objtba}});
        obj.collection("datas").findOne({id : id}, function (err , result) {
+           console.log("Found");
            if(err){throw err}
            var ttcopy = result.timetable;
            var arrcopy = result.subjects;
@@ -88,6 +119,7 @@ function getAllSubjects(id, callback) {
 
 function removeSubject(id, sbj, callback) {
     obj.collection("datas").findOne({id : id}, function (err, result) {
+        console.log("Found");
         var rv = {};
         if(err){throw err}
         var arrcopy = result.subjects;
@@ -106,6 +138,7 @@ function removeSubject(id, sbj, callback) {
             arrcopy[0].percent = perc;
             arrcopy.splice(i, 1);
             obj.collection("datas").updateOne({id : id}, {id : id, subjects : arrcopy, timetable: ttcopy});
+            callback(rv);
         });
     })
 }
@@ -144,7 +177,7 @@ function update(id, sobj, callback) {
                 var perc2 = (arrcopy[i].attended / arrcopy[i].total) * 100;
                 perc2 = Math.round(perc2 * 100) / 100;
                 arrcopy[i].percent = perc2;
-                rv.percent = perc2;
+                rv.percentage = perc2;
                 obj.collection("datas").updateOne({id : id}, {id : id, subjects : arrcopy, timetable: ttcopy});
                 callback(rv);
             });
@@ -196,7 +229,8 @@ function getSubjectsnColors(id ,callback) {
             };
             rv.push(objtba);
         }
-        console.log(rv);
+        // console.log(rv);
+        callback(rv);
     });
 }
 
@@ -208,5 +242,7 @@ module.exports = {
     removeSubject : removeSubject,
     getSnC :getSubjectsnColors ,
     NewUser : createNewCollection,
-    connectDb : connectDB
+    connectDb : connectDB,
+    findUserName : findUserName,
+    checkPassword : checkPassword
 };
