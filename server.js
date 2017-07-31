@@ -14,11 +14,12 @@ const session = require('express-session');
 const LocalStrategy = passportLocal.Strategy;
 
 sql.connectDb(function () {
-    app.listen(4000 || process.env.port, function (err) {
+    var port = process.env.PORT;
+    app.listen(port, function (err) {
         if(err){
             throw err;
         }
-        console.log("Server is Running on Port Number : 4000");
+        console.log("Server is Running on Port Number : " + port);
     });
 
 });
