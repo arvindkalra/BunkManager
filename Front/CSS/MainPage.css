@@ -91,7 +91,7 @@ button{
 
 @media screen and (max-width: 375px){
     .heading{
-        font-size: 4em;
+        font-size: 3em;
         width: 90%;
     }
     .butn{
