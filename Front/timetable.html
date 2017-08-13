@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Zilla+Slab" rel="stylesheet">
     <link rel="stylesheet" href="CSS/modal.css">
     <link rel="stylesheet" href="CSS/headings.css">
+    <link rel="stylesheet" href="CSS/mobileMenu.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     body{
         margin: 8px;
@@ -24,28 +26,59 @@
         BUNK MANAGER
     </div>
 
-    <div class="navloc">
-        <a href="mainpage.html" style="text-decoration: none; color: black"><div>HOME</div></a>
-        <a href="#" style="text-decoration: none; color: black"><div>TIME TABLE</div></a>
-        <a style="text-decoration: none; color: black" id="logoutbtn"><div>LOG OUT</div></a>
-    </div>
+    <!--<div class="navloc">-->
+        <!--<button type="button" id="mobile" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" onclick="openNav()">-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+        <!--</button>-->
+        <!--<div id="mySidenav">-->
+            <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
+            <!--<a href="mainpage.html" style="text-decoration: none; color: black"><div>HOME</div></a>-->
+            <!--<a href="#" style="text-decoration: none; color: black"><div>TIME TABLE</div></a>-->
+            <!--<a style="text-decoration: none; color: black" id="logoutbtn"><div>LOG OUT</div></a>-->
+        <!--</div>-->
+        <!--</div>-->
+
+    <nav class="navbar navbar-default navloc">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" id="mobbtn" class="mobile navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse mobmen" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="mainpage.html" style="text-decoration: none; color: black"><div>HOME</div></a></li>
+                    <li id="tt"><a href="#" style="text-decoration: none; color: black"><div>TIME TABLE</div></a></li>
+                    <li><a style="text-decoration: none; color: black" id="logoutbtn"><div>LOG OUT</div></a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 </div>
 
-<div class="box">
+<figure class="box">
 <ul class="nav nav-pills nav-fill bar">
-    <li class="nav-item ele active" id="mon">
+    <li class="nav-item ele active l1" id="mon">
         <a class="nav-link">Monday</a>
     </li>
-    <li class="nav-item ele" id="tue">
+    <li class="nav-item ele l1" id="tue">
         <a class="nav-link">Tuesday</a>
     </li>
-    <li class="nav-item ele" id="wed">
+    <li class="nav-item ele l1" id="wed">
         <a class="nav-link">Wednesday</a>
     </li>
-    <li class="nav-item ele" id="thu">
+    <li class="nav-item ele l2" id="thu">
         <a class="nav-link">Thursday</a>
     </li>
-    <li class="nav-item ele" id="fri">
+    <li class="nav-item ele l2" id="fri">
         <a class="nav-link">Friday</a>
     </li>
 </ul>
@@ -93,7 +126,7 @@
         </button>
     </div>
 
-</div>
+</figure>
 
 <script src="JS/addsubj.js"></script>
 
@@ -127,5 +160,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src = "JS/timet.js"></script>
 <script src="JS/signout.js"></script>
+<script src="JS/mobbtn.js"></script>
 </body>
 </html>

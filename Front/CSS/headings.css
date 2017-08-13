@@ -1,3 +1,6 @@
+.closebtn{
+    display: none;
+}
 .headbox{
     position: relative;
     top: 1px;
@@ -8,7 +11,7 @@
     border-style: solid;
     border-width: 1px;
     border-color: #cfd8dc;
-    font-size: 7vh;
+    font-size: 3em;
     display: inline-block;
     color: black;
     background: #18ffff;
@@ -16,21 +19,28 @@
     padding: 1%;
 }
 
-.navloc div{
-    text-align: center;
-    cursor: pointer;
-    width: 32%;
-    font-family: 'Fresca', sans-serif;
-    display: inline-block;
-
+.navloc div div ul{
+    width: 100%;
 }
 
-.navloc div:hover{
+.navloc div div ul li{
+    text-align: center;
+    cursor: pointer;
+    width: 30%;
+    font-family: 'Fresca', sans-serif;
+    display: inline-block;
+}
+#tt{
+    width: 38%;
+}
+
+.navloc div div ul li:hover{
     transition: 0.5s;
     background-color: #b3e5fc;
 }
 
 .navloc{
+    margin-bottom: 0!important;
     margin-top: 0.5%;
     float: right;
     width: 45%!important;
@@ -38,7 +48,7 @@
     border-style: solid;
     border-width: 1px;
     border-color: #cfd8dc;
-    font-size: 5vh;
+    font-size: 1.9em;
     display: inline-block;
     color: black;
     background-color: #eeff41;
@@ -46,17 +56,36 @@
     padding: 1%;
 }
 
+.icon-bar{
+    width: 100% !important;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+.mobile{
+    margin: auto auto!important;
+    width: 50px!important;
+}
+
 @media screen and (max-width: 1090px){
     .navloc{
-        font-size: 3vh;
+        font-size: 1.7em;
+        width: 60% !important;
     }
 }
 
-@media screen and (max-width: 720px){
+@media screen and (max-width: 768px){
     .navloc{
-        font-size: 2.5vh;
+        width: 100px!important;
     }
+    .navbar-header{
+        margin-right: 0!important;
+        margin-left: 0!important;
+    }
+}
+@media screen and (max-width: 375px){
     .heading{
-        font-size: 5vh;
+        font-size: 2.6em;
     }
 }
