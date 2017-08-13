@@ -106,6 +106,10 @@ button{
         width: 40%;
         left: 30%;
     }
+    .box{
+        left: 5%;
+        width: 90%;
+    }
 }
 
 #inbtn, #upbtn{
