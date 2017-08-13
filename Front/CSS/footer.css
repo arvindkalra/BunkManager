@@ -14,3 +14,9 @@
     opacity: 1;
     font-size: 3vh;
 }
+
+@media screen and (max-width: 375px){
+ .footer{
+     font-size: 2vh;
+ }
+}
