@@ -101,6 +101,13 @@ button{
     }
 }
 
+@media screen and (max-width: 585px){
+    button{
+        width: 40%;
+        left: 30%;
+    }
+}
+
 #inbtn, #upbtn{
     cursor: pointer;
 }
