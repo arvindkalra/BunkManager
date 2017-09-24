@@ -34,11 +34,28 @@
         BUNK MANAGER
     </div>
 
-    <div class="navloc">
-        <a href="#" style="text-decoration: none; color: black"><div>HOME</div></a>
-        <a href="timetable.html" style="text-decoration: none; color: black"><div>TIME TABLE</div></a>
-        <a style="text-decoration: none; color: black" id="logoutbtn"><div>LOG OUT</div></a>
-    </div>
+    <nav class="navbar navbar-default navloc">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" id="mobbtn" class="mobile navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse mobmen" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="mainpage.html" style="text-decoration: none; color: black"><div>HOME</div></a></li>
+                    <li id="tt"><a href="#" style="text-decoration: none; color: black"><div>TIME TABLE</div></a></li>
+                    <li><a style="text-decoration: none; color: black" id="logoutbtn"><div>LOG OUT</div></a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 </div>
 
 <div class="container bigbox" style="width: 100% !important;">
