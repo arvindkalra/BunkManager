@@ -14,7 +14,7 @@ const session = require('express-session');
 const LocalStrategy = passportLocal.Strategy;
 
 sql.connectDb(function () {
-    var port = process.env.PORT;
+    var port = 2000 || process.env.PORT;
     app.listen(port, function (err) {
         if(err){
             throw err;
